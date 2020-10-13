@@ -18,35 +18,6 @@ class WeatherLocation: Codable {
         self.latitude = latitude
         self.longitude = longitude
     }
-    
-    func getData(){
-        let urlString = "api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&exclude=minutely&units=imperial&appid=\(APIKeys.openWeatherKey)"
-        print("Were accessing url \(urlString)")
-        
-        guard let url = URL(string: urlString) else{
-            print("Couldnt make url")
-            return
-        }
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: url){(data, response, error) in
-            if let error = error{
-                print("ERROR: \(error.localizedDescription)")
-            }
-            
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                print("yo \(json)")
-            }
-            catch{
-                print("Json error \(error.localizedDescription)")
-            }
-        }
-        
-        task.resume()
-    }
 }
 
 
