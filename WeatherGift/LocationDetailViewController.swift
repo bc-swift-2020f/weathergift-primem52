@@ -23,20 +23,34 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
+
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     var weatherDetail: WeatherDetail!
     var locationIndex = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearUserInterface()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         updateUserInterface()
 
         // Do any additional setup after loading the view.
     }
     
+    func clearUserInterface(){
+        dateLabel.text = ""
+        placeLabel.text = ""
+        temperatureLabel.text = ""
+        summaryLabel.text = ""
+        imageView.image = UIImage()
+
+    }
     
     func updateUserInterface(){
         let pageViewController = UIApplication.shared.windows.first!.rootViewController as! PageViewController
@@ -56,6 +70,7 @@ class LocationDetailViewController: UIViewController {
                 self.temperatureLabel.text = "\(self.weatherDetail.temperature)°"
                 self.summaryLabel.text = self.weatherDetail.summary
                 self.imageView.image = UIImage(named: self.weatherDetail.dailyIcon)
+                self.tableView.reloadData()
             }
         }
         
@@ -88,4 +103,20 @@ class LocationDetailViewController: UIViewController {
         pageViewController.setViewControllers([pageViewController.createLocationDetailViewController(forPage: sender.currentPage)], direction: direction, animated: false, completion: nil)
     }
     
+}
+
+extension LocationDetailViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherDetail.dailyWeatherData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DailyTableViewCell
+        cell.dailyWeather = weatherDetail.dailyWeatherData[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
 }
