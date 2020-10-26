@@ -30,11 +30,15 @@
                                     <constraint firstAttribute="height" constant="44" id="upf-Mw-2uH"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="About" id="gLR-Pi-zcO"/>
+                                    <barButtonItem title="About" id="gLR-Pi-zcO">
+                                        <connections>
+                                            <segue destination="ZdU-sB-35a" kind="presentation" id="eUD-qZ-FfW"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cnP-cv-Dzr"/>
                                     <barButtonItem style="plain" id="xIE-i5-zwC">
                                         <pageControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="Szb-LA-Pyb">
-                                            <rect key="frame" x="79" y="4" width="217" height="37"/>
+                                            <rect key="frame" x="79" y="3.5" width="217" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="pageIndicatorTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -46,7 +50,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rJx-oF-mJ8"/>
                                     <barButtonItem image="list.bullet" catalog="system" id="nca-QD-wdl">
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="oih-9p-4be"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="ShowList" modalPresentationStyle="fullScreen" id="oih-9p-4be"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -87,7 +91,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sun.min" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="isF-8X-KX8">
-                                        <rect key="frame" x="7" y="8" width="134" height="209"/>
+                                        <rect key="frame" x="7" y="8" width="135" height="209"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -235,6 +239,82 @@
             </objects>
             <point key="canvasLocation" x="-676" y="125.4872563718141"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="dw5-QA-Gxd">
+            <objects>
+                <viewController id="ZdU-sB-35a" customClass="AboutViewController" customModule="WeatherGift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tF2-o0-29v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aX-tR-oBT">
+                                <rect key="frame" x="0.0" y="603" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bKH-GE-vYN"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Done" id="UZf-wc-gNz">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="ZdU-sB-35a" id="LGL-6D-eYJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyS-J8-tUQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather Gift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpx-DN-kHF">
+                                        <rect key="frame" x="8" y="8" width="359" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunrise.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QfI-Aj-iwH">
+                                        <rect key="frame" x="8" y="96" width="359" height="213"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="tintColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJU-sw-ffG">
+                                        <rect key="frame" x="8" y="319" width="359" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <string key="text">:)
+Morgan</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="powered_by_google_on_white" translatesAutoresizingMaskIntoConstraints="NO" id="hIa-1y-iLP">
+                                        <rect key="frame" x="8" y="544" width="359" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="powered_by_openweather" translatesAutoresizingMaskIntoConstraints="NO" id="PIA-ps-b8q">
+                                        <rect key="frame" x="8" y="587" width="359" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1aX-tR-oBT" firstAttribute="leading" secondItem="JvQ-8Z-juA" secondAttribute="leading" id="5xD-nC-UF5"/>
+                            <constraint firstItem="1aX-tR-oBT" firstAttribute="top" secondItem="gyS-J8-tUQ" secondAttribute="bottom" id="AHN-eO-as0"/>
+                            <constraint firstItem="gyS-J8-tUQ" firstAttribute="leading" secondItem="JvQ-8Z-juA" secondAttribute="leading" id="Lxb-2N-r6Q"/>
+                            <constraint firstItem="JvQ-8Z-juA" firstAttribute="bottom" secondItem="1aX-tR-oBT" secondAttribute="bottom" id="eNV-44-i1A"/>
+                            <constraint firstItem="gyS-J8-tUQ" firstAttribute="top" secondItem="JvQ-8Z-juA" secondAttribute="top" id="sAB-ag-2g8"/>
+                            <constraint firstItem="1aX-tR-oBT" firstAttribute="trailing" secondItem="JvQ-8Z-juA" secondAttribute="trailing" id="yY5-s9-GDw"/>
+                            <constraint firstItem="JvQ-8Z-juA" firstAttribute="trailing" secondItem="gyS-J8-tUQ" secondAttribute="trailing" id="yf3-ft-nvl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JvQ-8Z-juA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBd-fP-eBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666.39999999999998" y="952.17391304347836"/>
+        </scene>
         <!--Location List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -323,7 +403,10 @@
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="powered_by_google_on_white" width="144" height="18"/>
+        <image name="powered_by_openweather" width="468" height="228"/>
         <image name="rain" width="100" height="100"/>
         <image name="sun.min" catalog="system" width="128" height="121"/>
+        <image name="sunrise.fill" catalog="system" width="128" height="97"/>
     </resources>
 </document>
